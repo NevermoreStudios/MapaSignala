@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">MapaSignala</string>
+    <string name="distance">"30dp"</string>
+
+
+    <string name="app_name">MapaSignala:</string>
+    <string name="label1">Jacina:</string>
+    <string name="label2">Provajder:</string>
+    <string name="label3">Vrsta:</string>
+    <string name="label4">Lokacija:</string>
+    <string name="button1">Mapa</string>
+    <string name="button2">Podesavanja</string>
+    <string-array name="dropdown1"> <item>moi</item> <item>mts</item> <item>vip</item> <item>telenor</item> <item>Svi</item> </string-array>
+    <string-array name="dropdown2"> <item>2</item> <item>3</item> <item>4</item> <item>Svi</item> </string-array>
 </resources>

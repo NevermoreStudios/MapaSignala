@@ -31,4 +31,5 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     testCompile 'junit:junit:4.12'
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
 }
