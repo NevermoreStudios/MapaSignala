@@ -4,7 +4,7 @@
     package="com.nevermore.mapasignala"
 >
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,16 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
     >
-        <activity android:name=".ui.MainActivity_">
+        <service android:name=".ui.ReportingService" />
+        <activity android:name=".ui.MainActivity_"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.SettingsActivity_"
             android:label="@string/settings"
+            android:screenOrientation="portrait"
         />
+        <activity android:name=".ui.MapActivity_"
+            android:screenOrientation="portrait">
+        </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="NOPE"/>
     </application>
 
 </manifest>
