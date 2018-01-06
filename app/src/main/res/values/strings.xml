@@ -1,7 +1,4 @@
 <resources>
-    <string name="distance">"30dp"</string>
-
-
     <string name="app_name">MapaSignala</string>
     <string name="strength">Strength:</string>
     <string name="provider">Provider:</string>
