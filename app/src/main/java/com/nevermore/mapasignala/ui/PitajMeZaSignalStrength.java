@@ -1,9 +1,8 @@
-package com.nevermore.mapasignala;
+package com.nevermore.mapasignala.ui;
 
 import android.app.Activity;
 import android.content.Context;
 import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 
 public class PitajMeZaSignalStrength {

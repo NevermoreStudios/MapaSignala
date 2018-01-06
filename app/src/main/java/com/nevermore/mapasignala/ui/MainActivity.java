@@ -1,13 +1,15 @@
-package com.nevermore.mapasignala;
+package com.nevermore.mapasignala.ui;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.nevermore.mapasignala.R;
 import com.nevermore.mapasignala.server.APIClient;
 import com.nevermore.mapasignala.server.ServerStatus;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 
 import retrofit2.Call;
@@ -20,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     @AfterViews
     protected void init() {
-        // System.out.println(PitajMeZaSignalStrength.getTSPName());
         APIClient client = new APIClient();
         client.api.status().enqueue(new Callback<ServerStatus>() {
             @Override
@@ -39,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+    @Click
+    protected void mapButton() {
+        // TODO
+    }
+
+    @Click
+    protected void settingsButton() {
+        SettingsActivity_.intent(this).start();
     }
 
 }

@@ -2,13 +2,30 @@
     <string name="distance">"30dp"</string>
 
 
-    <string name="app_name">MapaSignala:</string>
-    <string name="label1">Jacina:</string>
-    <string name="label2">Provajder:</string>
-    <string name="label3">Vrsta:</string>
-    <string name="label4">Lokacija:</string>
-    <string name="button1">Mapa</string>
-    <string name="button2">Podesavanja</string>
-    <string-array name="dropdown1"> <item>moi</item> <item>mts</item> <item>vip</item> <item>telenor</item> <item>Svi</item> </string-array>
-    <string-array name="dropdown2"> <item>2</item> <item>3</item> <item>4</item> <item>Svi</item> </string-array>
+    <string name="app_name">MapaSignala</string>
+    <string name="strength">Strength:</string>
+    <string name="provider">Provider:</string>
+    <string name="type">Type:</string>
+    <string name="location">Location:</string>
+    <string name="map">Map</string>
+    <string name="settings">Settings</string>
+    <string name="interval">Interval</string>
+    <string name="key_interval">interval</string>
+    <string name="key_metered">metered</string>
+    <string name="metered">Metered connections</string>
+    <string name="summary_metered">Enable uploading data to server over metered connections (such as mobile data)</string>
+    <string name="summary_interval">How often should the data be uploaded to the server</string>
+    <string-array name="dropdown1">
+        <item>moj</item>
+        <item>mt:s</item>
+        <item>Vip</item>
+        <item>Telenor</item>
+        <item>Svi</item>
+    </string-array>
+    <string-array name="dropdown2">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>Svi</item>
+    </string-array>
 </resources>

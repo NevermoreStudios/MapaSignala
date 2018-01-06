@@ -1,104 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nevermore.mapasignala.MainActivity">
+>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/strength_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="@string/label1" />
+        android:layout_marginTop="@dimen/distance"
+        android:text="@string/strength"
+    />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/strength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/strength_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="TODO" />
+        android:layout_marginTop="@dimen/distance"
+    />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/provider_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView15"
+        android:layout_below="@+id/strength"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="@string/label2" />
+        android:layout_marginTop="@dimen/distance"
+        android:text="@string/provider"
+    />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/provider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/provider_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="TODO" />
+        android:layout_marginTop="@dimen/distance"
+    />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/type_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView25"
+        android:layout_below="@+id/provider"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="@string/label3" />
+        android:layout_marginTop="@dimen/distance"
+        android:text="@string/type"
+    />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/type_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="TODO" />
+        android:layout_marginTop="@dimen/distance"
+    />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/location_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView35"
+        android:layout_below="@+id/type"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="@string/label4" />
+        android:layout_marginTop="@dimen/distance"
+        android:text="@string/location"
+    />
 
     <TextView
-        android:id="@+id/textView45"
+        android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/location_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@string/distance"
-        android:text="TODO" />
+        android:layout_marginTop="@dimen/distance"
+    />
 
     <View android:id="@+id/strut"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+    />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/map_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@id/strut"
-        android:text="@string/button1" />
+        android:layout_alignEnd="@id/strut"
+        android:text="@string/map"
+    />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/settings_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@id/strut"
-        android:text="@string/button2" />
+        android:layout_alignStart="@id/strut"
+        android:text="@string/settings"
+    />
 
 </RelativeLayout>
