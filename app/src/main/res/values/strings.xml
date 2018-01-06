@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MapaSignala</string>
+
+    <string name="interval">Interval</string>
+    <string name="key_interval">interval</string>
+    <string name="key_metered">metered</string>
+    <string name="metered">Metered connections</string>
+    <string name="summary_metered">Enable uploading data to server over metered connections (such as mobile data)</string>
+    <string name="summary_interval">How often should the data be uploaded to the server</string>
+
     <string name="label1">Jačina:</string>
     <string name="label2">Provajder:</string>
     <string name="label3">Tip:</string>
@@ -10,4 +18,5 @@
     <string name="generacija">Generacija:</string>
     <string-array name="dropdown1"> <item>Svi</item> <item>Moj</item> <item>MTS</item> <item>VIP</item> <item>Telenor</item> </string-array>
     <string-array name="dropdown2"> <item>Sve</item> <item>4G</item> <item>3G</item> <item>2G</item> </string-array>
+
 </resources>

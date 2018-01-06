@@ -1,8 +1,10 @@
-package com.nevermore.mapasignala;
+package com.nevermore.mapasignala.ui;
 
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+
+import com.nevermore.mapasignala.ui.PitajMeZaSignalStrength;
 
 public class SSUpdater extends PhoneStateListener {
 

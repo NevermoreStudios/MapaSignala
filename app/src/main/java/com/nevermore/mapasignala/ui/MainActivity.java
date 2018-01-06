@@ -1,4 +1,4 @@
-package com.nevermore.mapasignala;
+package com.nevermore.mapasignala.ui;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nevermore.mapasignala.R;
 import com.nevermore.mapasignala.server.APIClient;
 import com.nevermore.mapasignala.server.ServerStatus;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -85,6 +87,16 @@ public class MainActivity extends AppCompatActivity {
         if(PitajMeZaSignalStrength.loc != null){
             textView44.setText(PitajMeZaSignalStrength.loc.getLatitude()+" "+PitajMeZaSignalStrength.loc.getLongitude());
         }
+    }
+
+    @Click
+    protected void mapButton() {
+        // TODO
+    }
+
+    @Click
+    protected void settingsButton() {
+        SettingsActivity_.intent(this).start();
     }
 
 }

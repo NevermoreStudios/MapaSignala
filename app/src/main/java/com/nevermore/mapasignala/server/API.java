@@ -12,10 +12,12 @@ import retrofit2.http.Path;
 public interface API {
     @GET("/")
     Call<ServerStatus> status();
-    @GET("/get/{latitude}/{longitude}")
-    Call<SignalData> signal(@Path("latitude") double latitude, @Path("longitude") double longitude);
-    @GET("/tile/{zoom}/{x}/{y}")
-    Call<ResponseBody> tile(@Path("zoom") int zoom, @Path("x") int x, @Path("y") int y);
+    @GET("/get/{latitude}/{longitude}/{provider}")
+    Call<List<Integer>> signal(@Path("latitude") double latitude, @Path("longitude") double longitude, @Path("provider") int provider);
+    @GET("/get/{latitude}/{longitude}/all")
+    Call<List<List<Integer>>> signalAll(@Path("latitude") double latitude, @Path("longitude") double longitude);
+    @GET("/tile/{zoom}/{x}/{y}/{gen}/{provider}")
+    Call<ResponseBody> tile(@Path("zoom") int zoom, @Path("x") int x, @Path("y") int y, @Path("gen") int gen, @Path("provider") int provider);
     @POST("/post")
     Call<ResponseStatus> post(@Body List<SignalData> data);
 }

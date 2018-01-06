@@ -1,4 +1,4 @@
-package com.nevermore.mapasignala;
+package com.nevermore.mapasignala.ui;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.location.Location;
 import android.renderscript.RenderScript;
 import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
