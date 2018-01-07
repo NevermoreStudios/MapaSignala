@@ -63,18 +63,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         PitajMeZaSignalStrength.init(this);
-        startService(new Intent(this,ReportingService.class));
+        startService(new Intent(this,ReportingService_.class));
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MapActivity_.intent(m).flags(FLAG_ACTIVITY_CLEAR_TOP).start();
+                MapActivity_.intent(m).start();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                SettingsActivity_.intent(m).start();
             }
         });
     }
@@ -89,14 +89,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Click
-    protected void mapButton() {
-        // TODO
-    }
-
-    @Click
-    protected void settingsButton() {
-        SettingsActivity_.intent(this).start();
-    }
 
 }

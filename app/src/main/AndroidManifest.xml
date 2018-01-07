@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
     >
-        <service android:name=".ui.ReportingService" />
+        <service android:name=".ui.ReportingService_" />
         <activity android:name=".ui.MainActivity_"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".ui.SettingsActivity_"
-            android:label="@string/settings"
+            android:label="@string/button2"
             android:screenOrientation="portrait"
         />
         <activity android:name=".ui.MapActivity_"

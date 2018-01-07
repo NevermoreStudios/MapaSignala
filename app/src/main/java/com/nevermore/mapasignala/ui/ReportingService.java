@@ -1,4 +1,4 @@
-package com.nevermore.mapasignala;
+package com.nevermore.mapasignala.ui;
 
 import android.app.IntentService;
 import android.app.Service;
@@ -14,10 +14,16 @@ import android.util.Log;
 
 import com.nevermore.mapasignala.DbStuff.AppDatabase;
 import com.nevermore.mapasignala.DbStuff.Entry;
+import com.nevermore.mapasignala.R;
 import com.nevermore.mapasignala.server.APIClient;
 import com.nevermore.mapasignala.server.ResponseStatus;
 import com.nevermore.mapasignala.server.ServerStatus;
 import com.nevermore.mapasignala.server.SignalData;
+
+import org.androidannotations.annotations.EService;
+import org.androidannotations.annotations.PreferenceChange;
+import org.androidannotations.annotations.PreferenceScreen;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -32,11 +38,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@EService
 public class ReportingService extends Service{
 
     //TODO Povuci Vreme
     long repval=5000;
     boolean overData = false;
+
+    @Pref
+    protected Settings_ settings;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -46,6 +56,9 @@ public class ReportingService extends Service{
     @Override
     public void onCreate()
     {
+        //repval=Long.parseLong(settings.interval().get())*1000;
+        //overData=settings.metered().get();
+        System.out.println("HAHAHA"+repval);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
