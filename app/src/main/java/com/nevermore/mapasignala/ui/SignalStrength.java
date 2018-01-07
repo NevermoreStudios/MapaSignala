@@ -1,10 +1,8 @@
 package com.nevermore.mapasignala.ui;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
-import android.renderscript.RenderScript;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
@@ -17,90 +15,84 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY;
 
-public class PitajMeZaSignalStrength {
+class SignalStrength {
 
-    static TelephonyManager telephonyManager;
-    static FusedLocationProviderClient flc;
-    static SSUpdater ssu;
-    static int dbm;
+    private static TelephonyManager telephonyManager;
+    private static FusedLocationProviderClient flc;
+    private static int dbm;
     static Location loc;
-    static LocationRequest locr;
-
-    static boolean inited = false;
-
-    static MainActivity act;
+    private static boolean initialized = false;
+    private static MainActivity act;
 
     @SuppressLint("MissingPermission")
-    public static void init(MainActivity a) {
-        if(!inited){
+    static void init(MainActivity a) {
+        if (!initialized) {
             act = a;
             telephonyManager = (TelephonyManager) a.getSystemService(Context.TELEPHONY_SERVICE);
-            ssu = new SSUpdater();
+            SSUpdater ssu = new SSUpdater();
             telephonyManager.listen(ssu, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
-            locr = new LocationRequest();
+            LocationRequest locr = new LocationRequest();
             locr.setInterval(5000);
             locr.setPriority(PRIORITY_HIGH_ACCURACY);
             flc = LocationServices.getFusedLocationProviderClient(act);
             flc.requestLocationUpdates(locr, new LocationCallback() {
                 @Override
                 public void onLocationResult(LocationResult locationResult) {
-                    PitajMeZaSignalStrength.setLocation(locationResult.getLocations().get(0));
-                    System.out.println("LOCUPD");
+                    System.out.println("GOT UPDATE");
+                    SignalStrength.setLocation(locationResult.getLocations().get(0));
                 }
             }, null);
             reqLocation();
             act.update();
-            inited = true;
+            initialized = true;
         }
     }
 
     @SuppressLint("MissingPermission")
-    public static void reqLocation() {
-
-        flc.getLastLocation()
-                .addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            PitajMeZaSignalStrength.setLocation(location);
-                        }
-                    }
-                });
+    private static void reqLocation() {
+        flc.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                // Got last known location. In some rare situations this can be null.
+                System.out.println("GOT PERMISSION");
+                if (location != null) {
+                    SignalStrength.setLocation(location);
+                } else {
+                    System.out.println("BUT IT'S NULL WTF");
+                }
+            }
+        });
     }
 
-    public static String getTSPName()
+    static String getTSPName()
     {
         return telephonyManager.getNetworkOperatorName();
     }
 
-    public static int getTSP()
+    static int getTSP()
     {
         return Integer.parseInt(telephonyManager.getNetworkOperator());
     }
 
 
-    public static int getNetworkType()
+    static int getNetworkType()
     {
         return telephonyManager.getNetworkType();
     }
 
-    public static void setDbm(int d)
-    {
+    static void setDbm(int d) {
         // opseg -50 super -120 nema ga
-        dbm=d;
+        dbm = d;
         reqLocation();
         act.update();
     }
 
-    public static int getDbm() {
+    static int getDbm() {
         return dbm;
     }
 
-    public static float getGeneration(int netType)
-    {
-        switch (netType)
-        {
+    static float getGeneration(int netType) {
+        switch (netType) {
             case TelephonyManager.NETWORK_TYPE_EDGE: return 2.5f;
             case TelephonyManager.NETWORK_TYPE_GPRS: return 2.5f;
             case TelephonyManager.NETWORK_TYPE_GSM: return 2;
@@ -115,10 +107,8 @@ public class PitajMeZaSignalStrength {
         }
     }
 
-    public static String getStringType(int netType)
-    {
-        switch (netType)
-        {
+    static String getStringType(int netType) {
+        switch (netType) {
             case TelephonyManager.NETWORK_TYPE_EDGE: return "EDGE";
             case TelephonyManager.NETWORK_TYPE_GPRS: return "GPRS";
             case TelephonyManager.NETWORK_TYPE_GSM: return "GSM";
@@ -133,8 +123,8 @@ public class PitajMeZaSignalStrength {
         }
     }
 
-    public static void setLocation(Location location) {
-        PitajMeZaSignalStrength.loc = location;
+    private static void setLocation(Location location) {
+        loc = location;
         act.update();
     }
 }

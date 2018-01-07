@@ -8,15 +8,28 @@
     <string name="summary_metered">Enable uploading data to server over metered connections (such as mobile data)</string>
     <string name="summary_interval">How often should the data be uploaded to the server</string>
 
-    <string name="label1">Jačina:</string>
-    <string name="label2">Provajder:</string>
-    <string name="label3">Tip:</string>
-    <string name="label4">Lokacija:</string>
-    <string name="button1">Mapa</string>
-    <string name="button2">Podešavanja</string>
-    <string name="provajder">Provajder:</string>
-    <string name="generacija">Generacija:</string>
-    <string-array name="dropdown1"> <item>Svi</item> <item>Moj</item> <item>MTS</item> <item>VIP</item> <item>Telenor</item> </string-array>
-    <string-array name="dropdown2"> <item>Sve</item> <item>4G</item> <item>3G</item> <item>2G</item> </string-array>
+    <string name="strength">Strength:</string>
+    <string name="provider">Provider:</string>
+    <string name="type">Type:</string>
+    <string name="location">Location:</string>
+    <string name="map">Map</string>
+    <string name="settings">Settings</string>
+    <string name="generation">Generation:</string>
+    <string name="strength_format">%1$d dBm</string>
+    <string name="type_format">%1$s %2$fG</string>
+    <string name="location_format">%1$f %2$f</string>
+    <string-array name="provider">
+        <item>Svi</item>
+        <item>Moj</item>
+        <item>mt:s</item>
+        <item>Vip</item>
+        <item>Telenor</item>
+    </string-array>
+    <string-array name="generation">
+        <item>Sve</item>
+        <item>4G</item>
+        <item>3G</item>
+        <item>2G</item>
+    </string-array>
 
 </resources>

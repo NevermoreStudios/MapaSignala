@@ -16,25 +16,28 @@
         android:theme="@style/AppTheme"
     >
         <service android:name=".ui.ReportingService_" />
-        <activity android:name=".ui.MainActivity_"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.MainActivity_"
+            android:screenOrientation="portrait"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.SettingsActivity_"
-            android:label="@string/button2"
+            android:label="@string/settings"
             android:screenOrientation="portrait"
         />
-        <activity android:name=".ui.MapActivity_"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".ui.MapActivity_"
+            android:screenOrientation="portrait"
+        />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="NOPE"/>
+            android:value="AIzaSyCRalA3-xAirBiytulqnXBSHQOudEIu6DA"
+        />
     </application>
 
 </manifest>
