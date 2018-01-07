@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
 
 import com.nevermore.mapasignala.db.AppDatabase;
 import com.nevermore.mapasignala.db.Entry;
@@ -71,36 +72,35 @@ public class ReportingService extends Service{
                                     SignalStrength.getNetworkType(),
                                     SignalStrength.getTSP()
                                     ));
-                            if(isWifi() || overData)
-                            {
-                                if(isInet())
-                                {
+                            if(isWifi() || overData) {
+                                if(isInet()) {
                                     final List<Entry> l= db.entryDao().getAll();
                                     ArrayList<SignalData> s = new ArrayList<>();
-                                    for(Entry e : l)
-                                    {
+                                    for(Entry e : l) {
                                         s.add(e.getSignalData());
                                     }
                                     db.entryDao().delete(l.toArray(new Entry[0]));
                                     client.api.post(s).enqueue(new Callback<ResponseStatus>() {
                                         @Override
-                                        public void onResponse(Call<ResponseStatus> call, Response<ResponseStatus> response) {
+                                        public void onResponse(@NonNull Call<ResponseStatus> call, @NonNull Response<ResponseStatus> response) {
                                             System.out.println(response.body());
                                             System.out.println("Poslao"+l.size());
                                         }
 
                                         @Override
-                                        public void onFailure(Call<ResponseStatus> call, Throwable t) {
+                                        public void onFailure(@NonNull Call<ResponseStatus> call, @NonNull Throwable t) {
                                             db.entryDao().insertAll(l.toArray(new Entry[0]));
                                             System.out.println("Rolling Back");
                                             System.out.println("Nije Poslao Q je "+db.entryDao().getAll().size());
                                         }
                                     });
-                                }else{System.out.println("Nije Poslao Q je "+db.entryDao().getAll().size());}
-                            }else{System.out.println("Nije Poslao Q je "+db.entryDao().getAll().size());}
-
-                        }
-                        catch (Exception e) {
+                                } else {
+                                    System.out.println("Nije Poslao Q je "+db.entryDao().getAll().size());
+                                }
+                            } else {
+                                System.out.println("Nije Poslao Q je "+db.entryDao().getAll().size());
+                            }
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
@@ -115,27 +115,21 @@ public class ReportingService extends Service{
         return null;
     }
 
-    private boolean isInet()
-    {
+    private boolean isInet() {
         try {
             int timeoutMs = 1500;
             Socket sock = new Socket();
             SocketAddress sockaddr = new InetSocketAddress("8.8.8.8", 53);
-
             sock.connect(sockaddr, timeoutMs);
             sock.close();
-
             return true;
         } catch (IOException e) { return false; }
     }
 
-    private  boolean isWifi()
-    {
+    private  boolean isWifi() {
         final ConnectivityManager connMgr = (ConnectivityManager)
                 this.getSystemService(Context.CONNECTIVITY_SERVICE);
         final android.net.NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifi.isConnected()) {
-            return true;
-        }else{return  false;}
+        return wifi.isConnected();
     }
 }

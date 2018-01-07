@@ -64,19 +64,16 @@ class SignalStrength {
         });
     }
 
-    static String getTSPName()
-    {
+    static String getTSPName() {
         return telephonyManager.getNetworkOperatorName();
     }
 
-    static int getTSP()
-    {
+    static int getTSP() {
         return Integer.parseInt(telephonyManager.getNetworkOperator());
     }
 
 
-    static int getNetworkType()
-    {
+    static int getNetworkType() {
         return telephonyManager.getNetworkType();
     }
 

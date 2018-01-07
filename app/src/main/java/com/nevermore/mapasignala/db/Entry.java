@@ -29,8 +29,7 @@ public class Entry {
         this.provider = provider;
     }
 
-    public SignalData getSignalData()
-    {
+    public SignalData getSignalData() {
         return new SignalData( latitude,  longitude,  dbm,  type,  provider);
     }
 }
