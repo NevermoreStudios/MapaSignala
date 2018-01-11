@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nevermore.mapasignala"
 >
-
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <!-- Application -->
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:fullBackupContent="false"
+        tools:ignore="GoogleAppIndexingWarning"
     >
+        <!-- Services -->
         <service android:name=".ui.ReportingService_" />
-        <activity android:name=".ui.MainActivity_"
-            android:screenOrientation="portrait">
+        <!-- Activities -->
+        <activity
+            android:name=".ui.MapActivity_"
+            android:screenOrientation="portrait"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.SettingsActivity_"
-            android:label="@string/button2"
+            android:name=".ui.StatusActivity_"
             android:screenOrientation="portrait"
         />
-        <activity android:name=".ui.MapActivity_"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".ui.SettingsActivity_"
+            android:label="@string/settings"
+            android:screenOrientation="portrait"
+        />
+        <!-- Metadata -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="NOPE"/>
+            android:value="AIzaSyCRalA3-xAirBiytulqnXBSHQOudEIu6DA"
+        />
     </application>
-
 </manifest>

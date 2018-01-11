@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+>
 
     <View
         android:id="@+id/c"
@@ -9,110 +11,96 @@
         android:layout_centerVertical="true"
         android:layout_height="0dp"
         android:layout_width="0dp"
-        />
+    />
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="100dp"
+        android:id="@+id/strength_text"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:text="@string/label1" />
+        android:textSize="30sp"
+        android:text="@string/strength"
+    />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="100dp"
+        android:id="@+id/strength"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/strength_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:text="TODO" />
+        android:textSize="30sp"
+    />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/provider_text"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView11"
-        android:layout_toRightOf="@id/c"
+        android:layout_below="@+id/strength"
+        android:layout_toEndOf="@id/c"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:textAlignment="center"
-        android:text="@string/label2" />
+        android:text="@string/provider"
+    />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/provider"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/provider_text"
         android:layout_marginTop="15dp"
-        android:layout_alignLeft="@id/textView2"
-        android:layout_alignRight="@id/textView2"
+        android:layout_alignStart="@id/provider_text"
+        android:layout_alignEnd="@id/provider_text"
         android:textAlignment="center"
-        android:text="TODO" />
+    />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/type_text"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView11"
-        android:layout_toLeftOf="@id/c"
+        android:layout_below="@+id/strength"
+        android:layout_toStartOf="@id/c"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:textAlignment="center"
-        android:text="@string/label3" />
+        android:text="@string/type"
+    />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/type"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/provider_text"
         android:layout_marginTop="15dp"
-        android:layout_alignLeft="@id/textView3"
-        android:layout_alignRight="@id/textView3"
+        android:layout_alignStart="@id/type_text"
+        android:layout_alignEnd="@id/type_text"
         android:textAlignment="center"
-        android:text="TODO" />
+    />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/location_text"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView22"
+        android:layout_below="@+id/provider"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textAlignment="center"
-        android:text="@string/label4" />
+        android:text="@string/location"
+    />
 
     <TextView
-        android:id="@+id/textView44"
+        android:id="@+id/location"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/location_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:textAlignment="center"
-        android:text="TODO" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@id/c"
-        android:text="@string/button1" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/c"
-        android:text="@string/button2" />
+    />
 
 </RelativeLayout>

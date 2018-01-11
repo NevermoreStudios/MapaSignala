@@ -1,17 +1,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
     <SwitchPreference
         android:defaultValue="false"
         android:key="@string/key_metered"
         android:summary="@string/summary_metered"
         android:title="@string/metered"
     />
-
     <com.nevermore.mapasignala.ui.NumberPreference
         android:defaultValue="60"
         android:key="@string/key_interval"
         android:title="@string/interval"
         android:summary="@string/summary_interval"
     />
-
 </PreferenceScreen>

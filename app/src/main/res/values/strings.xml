@@ -1,22 +1,55 @@
 <resources>
-    <string name="app_name">MapaSignala</string>
-
+    <string name="app_name">Mapa Signala</string>
     <string name="interval">Interval</string>
     <string name="key_interval">interval</string>
     <string name="key_metered">metered</string>
     <string name="metered">Metered connections</string>
     <string name="summary_metered">Enable uploading data to server over metered connections (such as mobile data)</string>
     <string name="summary_interval">How often should the data be uploaded to the server</string>
-
-    <string name="label1">Jačina:</string>
-    <string name="label2">Provajder:</string>
-    <string name="label3">Tip:</string>
-    <string name="label4">Lokacija:</string>
-    <string name="button1">Mapa</string>
-    <string name="button2">Podešavanja</string>
-    <string name="provajder">Provajder:</string>
-    <string name="generacija">Generacija:</string>
-    <string-array name="dropdown1"> <item>Svi</item> <item>Moj</item> <item>MTS</item> <item>VIP</item> <item>Telenor</item> </string-array>
-    <string-array name="dropdown2"> <item>Sve</item> <item>4G</item> <item>3G</item> <item>2G</item> </string-array>
-
+    <string name="strength">Strength:</string>
+    <string name="provider">Provider:</string>
+    <string name="type">Type:</string>
+    <string name="location">Location:</string>
+    <string name="settings">Settings</string>
+    <string name="generation">Generation:</string>
+    <string name="strength_format">%1$d dBm</string>
+    <string name="type_format">%1$s %2$.1fG</string>
+    <string name="location_format">%1$f %2$f</string>
+    <string name="help">Help</string>
+    <string name="status">Status</string>
+    <string name="signal_properties">Signal Properties</string>
+    <string name="ok">OK</string>
+    <string name="min">MIN</string>
+    <string name="avg">AVG</string>
+    <string name="max">MAX</string>
+    <string-array name="provider">
+        <item>Moj</item>
+        <item>Svi</item>
+        <item>mt:s</item>
+        <item>Vip</item>
+        <item>Telenor</item>
+    </string-array>
+    <string-array name="generation">
+        <item>Sve</item>
+        <item>4G</item>
+        <item>3G</item>
+        <item>2G</item>
+    </string-array>
+    <string name="help_text">
+        - Na mapi ispod možete videti označena mesta sa signalima, gde jarkije boje označavaju jači signal. Crvena boja označava 2G, žuta 3G, a zelena 4G mrežu\n
+        - Nakon dugog pritiska na jedan od obojenih kružića će se pojaviti prozor sa podacima o jačini signala na toj lokaciji\n
+        - Kroz meni iznad mape možete podesiti konkretnog provajdera kojeg želite da vidite\n
+        - Pritiskom na dugme za status (i) otići ćete na stranicu sa podacima o jačini signala na vašoj trenutnoj lokaciji\n
+        - Pritiskom na podešavanja možete podesiti interval između dva slanja podataka sa vašeg uređaja na server, kao i da li se slanje vrši preko mobilnog interneta
+    </string>
+    <string name="error">An error occurred, please try again</string>
+    <string name="loading">Loading</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="mts">MT:S</string>
+    <string name="g4">4G:</string>
+    <string name="not_available">N/A</string>
+    <string name="g3">3G:</string>
+    <string name="g2">2G:</string>
+    <string name="vip">VIP</string>
+    <string name="telenor">Telenor</string>
 </resources>

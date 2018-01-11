@@ -4,7 +4,7 @@ import org.androidannotations.annotations.sharedpreferences.DefaultBoolean;
 import org.androidannotations.annotations.sharedpreferences.DefaultString;
 import org.androidannotations.annotations.sharedpreferences.SharedPref;
 
-@SharedPref
+@SharedPref(SharedPref.Scope.UNIQUE)
 public interface Settings {
     @DefaultString("60")
     String interval();

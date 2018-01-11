@@ -1,42 +1,33 @@
 package com.nevermore.mapasignala.ui;
 
 import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
-
-import com.nevermore.mapasignala.ui.PitajMeZaSignalStrength;
 
 public class SSUpdater extends PhoneStateListener {
 
     @Override
-    public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+    public void onSignalStrengthsChanged(android.telephony.SignalStrength signalStrength) {
         super.onSignalStrengthsChanged(signalStrength);
+        int index = getIndex(SignalStrength.getNetworkType());
+        if (index == -1) {
+            System.out.println("Unknown network type");
+        } else {
+            SignalStrength.setDbm(Integer.parseInt(signalStrength.toString().split(" ")[index]));
+        }
+    }
 
-        if(PitajMeZaSignalStrength.getNetworkType() == TelephonyManager.NETWORK_TYPE_UMTS)
-        {
-            PitajMeZaSignalStrength.setDbm(Integer.parseInt(signalStrength.toString().split(" ")[3]));
+    private int getIndex(int type) {
+        switch (type) {
+            case TelephonyManager.NETWORK_TYPE_EDGE:
+                return 1;
+            case TelephonyManager.NETWORK_TYPE_HSPAP:
+            case TelephonyManager.NETWORK_TYPE_HSPA:
+            case TelephonyManager.NETWORK_TYPE_UMTS:
+                return 3;
+            case TelephonyManager.NETWORK_TYPE_LTE:
+                return 11;
+            default: return -1;
         }
-        else if (PitajMeZaSignalStrength.getNetworkType() == TelephonyManager.NETWORK_TYPE_EDGE)
-        {
-            PitajMeZaSignalStrength.setDbm(Integer.parseInt(signalStrength.toString().split(" ")[1]));
-        }
-        else if (PitajMeZaSignalStrength.getNetworkType() == TelephonyManager.NETWORK_TYPE_LTE)
-        {
-            PitajMeZaSignalStrength.setDbm(Integer.parseInt(signalStrength.toString().split(" ")[11]));
-        }
-        else if (PitajMeZaSignalStrength.getNetworkType() == TelephonyManager.NETWORK_TYPE_HSPA)
-        {
-            PitajMeZaSignalStrength.setDbm(Integer.parseInt(signalStrength.toString().split(" ")[3]));
-        }
-        else if (PitajMeZaSignalStrength.getNetworkType() == TelephonyManager.NETWORK_TYPE_HSPAP)
-        {
-            PitajMeZaSignalStrength.setDbm(Integer.parseInt(signalStrength.toString().split(" ")[3]));
-        }
-        else
-        {
-            System.out.println(signalStrength.toString());
-        }
-
     }
 
 }

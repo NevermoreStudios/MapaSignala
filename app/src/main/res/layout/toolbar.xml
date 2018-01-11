@@ -8,5 +8,5 @@
     android:minHeight="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:title="@string/button2"
+    app:title="@string/settings"
 />

@@ -1,6 +1,6 @@
 package com.nevermore.mapasignala.ui;
 
-import android.app.IntentService;
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -10,25 +10,19 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.nevermore.mapasignala.DbStuff.AppDatabase;
-import com.nevermore.mapasignala.DbStuff.Entry;
-import com.nevermore.mapasignala.R;
+import com.nevermore.mapasignala.db.AppDatabase;
+import com.nevermore.mapasignala.db.Entry;
 import com.nevermore.mapasignala.server.APIClient;
 import com.nevermore.mapasignala.server.ResponseStatus;
-import com.nevermore.mapasignala.server.ServerStatus;
 import com.nevermore.mapasignala.server.SignalData;
 
 import org.androidannotations.annotations.EService;
-import org.androidannotations.annotations.PreferenceChange;
-import org.androidannotations.annotations.PreferenceScreen;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -38,12 +32,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@SuppressLint("Registered")
 @EService
 public class ReportingService extends Service{
-
-    //TODO Povuci Vreme
-    long repval=5000;
-    boolean overData = false;
 
     @Pref
     protected Settings_ settings;
@@ -54,73 +45,61 @@ public class ReportingService extends Service{
     }
 
     @Override
-    public void onCreate()
-    {
-        //repval=Long.parseLong(settings.interval().get())*1000;
-        //overData=settings.metered().get();
-        System.out.println("HAHAHA"+repval);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                .permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+    public void onCreate() {
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
         final AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "db1").allowMainThreadQueries().build();
         final APIClient client = new APIClient();
         final Handler handler = new Handler();
-        Timer timer = new Timer();
-        TimerTask doAsynchronousTask = new TimerTask() {
+        new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 handler.post(new Runnable() {
                     @SuppressWarnings("unchecked")
                     public void run() {
                         try {
-                            //"Your function call  "
-                            db.entyDao().insertAll(
-                            new Entry(
-                                    PitajMeZaSignalStrength.loc.getLatitude(),
-                                    PitajMeZaSignalStrength.loc.getLongitude(),
-                                    PitajMeZaSignalStrength.getDbm(),
-                                    PitajMeZaSignalStrength.getNetworkType(),
-                                    PitajMeZaSignalStrength.getTSP()
-                                    ));
-                            if(isWifi() || overData)
-                            {
-                                if(isInet())
-                                {
-                                    final List<Entry> l= db.entyDao().getAll();
+                            if (SignalStrength.loc == null) {
+                                return;
+                            }
+                            db.entryDao().insertAll(new Entry(
+                                SignalStrength.loc.getLatitude(),
+                                SignalStrength.loc.getLongitude(),
+                                SignalStrength.getDbm(),
+                                SignalStrength.getNetworkType(),
+                                SignalStrength.getTSP()
+                            ));
+                            if (isWifi() || settings.metered().get()) {
+                                if (hasInternetConnection()) {
+                                    final List<Entry> l = db.entryDao().getAll();
                                     ArrayList<SignalData> s = new ArrayList<>();
-                                    for(Entry e : l)
-                                    {
+                                    for (Entry e : l) {
                                         s.add(e.getSignalData());
                                     }
-                                    db.entyDao().delete(l.toArray(new Entry[0]));
+                                    db.entryDao().delete(l.toArray(new Entry[0]));
                                     client.api.post(s).enqueue(new Callback<ResponseStatus>() {
                                         @Override
-                                        public void onResponse(Call<ResponseStatus> call, Response<ResponseStatus> response) {
-                                            System.out.println(response.body());
-
-                                            System.out.println("Poslao"+l.size());
+                                        public void onResponse(@NonNull Call<ResponseStatus> call, @NonNull Response<ResponseStatus> response) {
+                                            ResponseStatus status = response.body();
+                                            if (status == null || !status.success) {
+                                                System.out.println("Simke je nesto sjebao mozda");
+                                                db.entryDao().insertAll(l.toArray(new Entry[0]));
+                                            }
                                         }
 
                                         @Override
-                                        public void onFailure(Call<ResponseStatus> call, Throwable t) {
-                                            db.entyDao().insertAll(l.toArray(new Entry[0]));
-                                            System.out.println("Rolling Back");
-                                            System.out.println("Nije Poslao Q je "+db.entyDao().getAll().size());
+                                        public void onFailure(@NonNull Call<ResponseStatus> call, @NonNull Throwable t) {
+                                            db.entryDao().insertAll(l.toArray(new Entry[0]));
                                         }
                                     });
-                                }else{System.out.println("Nije Poslao Q je "+db.entyDao().getAll().size());}
-                            }else{System.out.println("Nije Poslao Q je "+db.entyDao().getAll().size());}
-
-                        }
-                        catch (Exception e) {
+                                }
+                            }
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 });
             }
-        };
-        timer.schedule(doAsynchronousTask, 0, repval);
+        }, 0, Integer.parseInt(settings.interval().get()) * 1000);
     }
 
     @Override
@@ -128,27 +107,19 @@ public class ReportingService extends Service{
         return null;
     }
 
-    private boolean isInet()
-    {
+    private boolean hasInternetConnection() {
         try {
-            int timeoutMs = 1500;
             Socket sock = new Socket();
-            SocketAddress sockaddr = new InetSocketAddress("8.8.8.8", 53);
-
-            sock.connect(sockaddr, timeoutMs);
+            sock.connect(new InetSocketAddress("8.8.8.8", 53), 1500);
             sock.close();
-
             return true;
-        } catch (IOException e) { return false; }
+        } catch (IOException e) {
+            return false;
+        }
     }
 
-    private  boolean isWifi()
-    {
-        final ConnectivityManager connMgr = (ConnectivityManager)
-                this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        final android.net.NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifi.isConnected()) {
-            return true;
-        }else{return  false;}
+    private  boolean isWifi() {
+        final ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm != null && cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected();
     }
 }

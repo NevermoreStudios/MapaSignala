@@ -1,6 +1,6 @@
 package com.nevermore.mapasignala.server;
 
-import com.nevermore.mapasignala.util.Constants;
+import com.nevermore.mapasignala.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
