@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mapa Signala</string>
+    <string name="interval">Interval</string>
+    <string name="metered">Ograničene veze</string>
+    <string name="summary_metered">Omogući slanje podataka na server preko ograničenih veza (kao što su mobilni podaci)</string>
+    <string name="summary_interval">Koliko često bi podaci trebalo da budu slati na server</string>
+    <string name="strength">Jačina:</string>
+    <string name="provider">Provajder:</string>
+    <string name="type">Tip:</string>
+    <string name="location">Lokacija:</string>
+    <string name="settings">Podešavanja</string>
+    <string name="generation">Generacija</string>
+    <string name="help">Pomoć</string>
+    <string name="status">Status</string>
+    <string name="signal_properties">Osobine signala</string>
+    <string name="ok">U redu</string>
+    <string name="avg">PROS</string>
+    <string name="max">MAKS</string>
+    <string name="error">Desila se greška, pokušajte ponovo</string>
+    <string name="loading">Učitavanje</string>
+    <string name="please_wait">Molimo sačekajte…</string>
+    <string-array name="generation">
+        <item>Sve</item>
+        <item>4G</item>
+        <item>3G</item>
+        <item>2G</item>
+    </string-array>
+    <string-array name="provider">
+        <item>Moj</item>
+        <item>Svi</item>
+        <item>mt:s</item>
+        <item>Vip</item>
+        <item>Telenor</item>
+    </string-array>
+</resources>

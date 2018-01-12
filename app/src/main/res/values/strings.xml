@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Mapa Signala</string>
     <string name="interval">Interval</string>
-    <string name="key_interval">interval</string>
-    <string name="key_metered">metered</string>
+    <string name="key_interval" translatable="false">interval</string>
+    <string name="key_metered" translatable="false">metered</string>
     <string name="metered">Metered connections</string>
     <string name="summary_metered">Enable uploading data to server over metered connections (such as mobile data)</string>
     <string name="summary_interval">How often should the data be uploaded to the server</string>
@@ -12,25 +12,25 @@
     <string name="location">Location:</string>
     <string name="settings">Settings</string>
     <string name="generation">Generation:</string>
-    <string name="strength_format">%1$d dBm</string>
-    <string name="type_format">%1$s %2$.1fG</string>
-    <string name="location_format">%1$f %2$f</string>
+    <string name="strength_format" translatable="false">%1$d dBm</string>
+    <string name="type_format" translatable="false">%1$s %2$.1fG</string>
+    <string name="location_format" translatable="false">%1$f %2$f</string>
     <string name="help">Help</string>
     <string name="status">Status</string>
     <string name="signal_properties">Signal Properties</string>
     <string name="ok">OK</string>
-    <string name="min">MIN</string>
+    <string name="min" translatable="false">MIN</string>
     <string name="avg">AVG</string>
     <string name="max">MAX</string>
     <string-array name="provider">
-        <item>Moj</item>
-        <item>Svi</item>
+        <item>Mine</item>
+        <item>All</item>
         <item>mt:s</item>
         <item>Vip</item>
         <item>Telenor</item>
     </string-array>
     <string-array name="generation">
-        <item>Sve</item>
+        <item>All</item>
         <item>4G</item>
         <item>3G</item>
         <item>2G</item>
@@ -45,11 +45,11 @@
     <string name="error">An error occurred, please try again</string>
     <string name="loading">Loading</string>
     <string name="please_wait">Please wait…</string>
-    <string name="mts">MT:S</string>
-    <string name="g4">4G:</string>
-    <string name="not_available">N/A</string>
-    <string name="g3">3G:</string>
-    <string name="g2">2G:</string>
-    <string name="vip">VIP</string>
-    <string name="telenor">Telenor</string>
+    <string name="mts" translatable="false">mt:s</string>
+    <string name="g4" translatable="false">4G:</string>
+    <string name="not_available" translatable="false">N/A</string>
+    <string name="g3" translatable="false">3G:</string>
+    <string name="g2" translatable="false">2G:</string>
+    <string name="vip" translatable="false">VIP</string>
+    <string name="telenor" translatable="false">Telenor</string>
 </resources>
